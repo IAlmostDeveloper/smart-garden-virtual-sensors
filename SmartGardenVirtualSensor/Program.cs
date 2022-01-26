@@ -33,7 +33,7 @@ namespace SmartGardenVirtualSensor
             var humidityHelper = new HumidityHelper(50.0f, 0.2f);
             string topic = string.Format("/class/stand{0}/humidity", args[0]);
             string commandsTopic = string.Format("/class/stand{0}/commands", args[0]);
-            ManagedMqttClientOptions options = TcpMqttClientOptions("192.168.137.16");
+            ManagedMqttClientOptions options = TcpMqttClientOptions(args[1]);
             var mqttClient = new MqttFactory().CreateManagedMqttClient();
 
             await mqttClient.SubscribeAsync(new MqttTopicFilterBuilder().WithTopic(commandsTopic).Build());
